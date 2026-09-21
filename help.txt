@@ -1,0 +1,139 @@
+
+OPEN CASCADE TEXT_TO_BREP HELP (FULL ENUM REFERENCE)
+
+1. FONT ASPECT ENUMS (Font_FA_*)
+
+These control text style:
+
+- Font_FA_Regular
+    Normal text (default)
+
+- Font_FA_Bold
+    Thick / bold text
+
+- Font_FA_Italic
+    Slanted text
+
+- Font_FA_BoldItalic
+    Bold + Slanted combined
+
+-----------------------------------------------------
+
+2. STEP SCHEMA OPTIONS
+
+Used in:
+Interface_Static_SetCVal("write.step.schema", value)
+
+Available values:
+
+- AP203
+    Old mechanical CAD standard
+    Basic geometry only
+
+- AP214IS
+    Automotive / industrial CAD standard
+    MOST COMPATIBLE (recommended default)
+
+- AP214CD
+    Committee draft version (rare use)
+
+- AP242
+    Modern STEP standard
+    Supports PMI, advanced CAD data
+    BEST MODERN OPTION
+
+-----------------------------------------------------
+
+3. COMPOSITE CURVE (boolean)
+
+- True
+    Combines character edges into smoother curves
+    Recommended for clean STEP output
+
+- False
+    Keeps individual edges separated
+    Useful for debugging or editing letters
+
+-----------------------------------------------------
+
+4. FONT NAME (system dependent)
+
+Common supported fonts:
+
+- Arial (most stable)
+- Calibri
+- Tahoma
+- Verdana
+- Times New Roman
+- Courier New
+- Consolas
+- Segoe UI
+
+NOTE:
+Font availability depends on OS installation.
+
+-----------------------------------------------------
+
+5. TEXT DIRECTION (gp_Dir)
+
+Controls vertical orientation:
+
+- (0,0,1) → Up (XY plane text)
+- (0,0,-1) → Down (flipped)
+- (1,0,0) → Side orientation
+- (0,1,0) → Rotated direction
+
+-----------------------------------------------------
+
+6. X DIRECTION (writing direction)
+
+Controls horizontal flow:
+
+- (1,0,0) → Left to Right (normal English)
+- (-1,0,0) → Right to Left
+- (0,1,0) → Vertical layout
+- (0,-1,0) → Reverse vertical
+
+-----------------------------------------------------
+
+7. POSITION (gp_Pnt)
+
+Defines insertion point:
+
+- (0,0,0) → Origin
+- Any XYZ coordinate in model space
+
+-----------------------------------------------------
+
+8. HEIGHT (float)
+
+Defines TEXT SIZE ONLY.
+
+Example:
+height = 10.0
+
+This controls:
+- letter height
+- vertical scaling
+
+-----------------------------------------------------
+
+9. TRANSFORM (gp_Trsf)
+
+Used for:
+- moving text
+- rotating text
+- scaling text
+- mirroring text
+
+Available operations:
+- SetTranslation
+- SetRotation
+- SetScale
+- SetMirror
+- SetTransformation
+
+
+
+Width is autocalculate by this 
+font + height + character spacing + text length
